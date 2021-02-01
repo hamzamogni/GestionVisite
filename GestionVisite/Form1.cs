@@ -73,5 +73,23 @@ namespace GestionVisite
             }
             return proche;
         }
+
+        private double totalDistance(List<Personne> clients)
+        {
+            /*
+            ** if 'ordre' and 'clients' don't have the same size
+            ** it means that 'ordre' is not valid, therefore we
+            ** run 'Visiter' before proceeding
+            */
+            if (ordre.Capacity != clients.Capacity)
+                Visiter(Commercial, clients);
+
+            double total = 0;
+
+            for (int i = 0; i < ordre.Capacity-1; i++)
+                total += Helper.Distance(ordre[I], ordre[i+1]);
+
+            return total;
+        }
     }
 }
